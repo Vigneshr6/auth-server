@@ -3,20 +3,20 @@ package com.vignesh.authserver.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 @Entity
 @Getter
 @Setter
-public class User {
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -31,14 +31,27 @@ public class User {
     private String email;
     private LocalDate dob;
     @ElementCollection
-    private List<Role> roles;
+    @CollectionTable(name = "USER_ROLES",joinColumns = @JoinColumn(name = "USER_ID"))
+    @Column(name = "ROLES")
+    private List<Role> authorities;
 
-    public org.springframework.security.core.userdetails.User toAuthUser() {
-        org.springframework.security.core.userdetails.User u = new org.springframework.security.core.userdetails.User(username,
-                password,
-                getRoles().stream().map(
-                        r -> new SimpleGrantedAuthority(
-                                r.getAuthority())).filter(Objects::nonNull).collect(Collectors.toList()));
-        return u;
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }

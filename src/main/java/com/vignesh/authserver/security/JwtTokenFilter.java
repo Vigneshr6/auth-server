@@ -29,9 +29,9 @@ public class JwtTokenFilter extends OncePerRequestFilter {
             }
         } catch (IllegalArgumentException ex) {
             //this is very important, since it guarantees the user is not authenticated at all
-            SecurityContextHolder.clearContext();
+/*            SecurityContextHolder.clearContext();
             httpServletResponse.sendError(HttpStatus.UNAUTHORIZED.value(), ex.getMessage());
-            return;
+            return;*/
         }
 
         filterChain.doFilter(httpServletRequest, httpServletResponse);

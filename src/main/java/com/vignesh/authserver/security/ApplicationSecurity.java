@@ -33,15 +33,16 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable();
         http.httpBasic();
         http.authorizeRequests()
-                .antMatchers("/auth**").permitAll()
+                .antMatchers("/api/auth/**").permitAll()
                 .antMatchers("/h2/**").permitAll()
-                .antMatchers("/users").hasRole("USER");
+                .anyRequest().authenticated();
+//                .antMatchers("/api/users").hasRole("USER");
         http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/h2/**");
+        web.ignoring().antMatchers("/h2/**", "/api/auth/signin");
     }
 
     @Bean
@@ -51,13 +52,11 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
-        configuration.setAllowedMethods(Arrays.stream(HttpMethod.values()).map(m -> m.name()).collect(Collectors.toList()));
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-//        source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
-        return source;
+        CorsConfiguration corsConfiguration = new CorsConfiguration().applyPermitDefaultValues();
+        corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:5000"));
+        UrlBasedCorsConfigurationSource corsConfigurationSource = new UrlBasedCorsConfigurationSource();
+        corsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration);
+        return corsConfigurationSource;
     }
 
     @Override

@@ -35,7 +35,7 @@ public class AuthenticationController {
     @PostMapping(value = "/signin",consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity signIn(@RequestBody User user) {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
-        org.springframework.security.core.userdetails.User principal = (org.springframework.security.core.userdetails.User) authentication.getPrincipal();
+        User principal = (User) authentication.getPrincipal();
         String token = jwtTokenProvider.createToken(principal);
         return ResponseEntity.ok().header(AUTHORIZATION, token).body(user);
     }
@@ -43,11 +43,11 @@ public class AuthenticationController {
     @PostMapping(value = "/signup",consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity signup(@RequestBody @Valid User user) {
         log.debug("signup req : {}", user);
-        if (user.getRoles() == null) {
-            user.setRoles(Collections.singletonList(Role.ROLE_USER));
+        if (user.getAuthorities() == null) {
+            user.setAuthorities(Collections.singletonList(Role.ROLE_USER));
         }
         userService.createUser(user);
-        String token = jwtTokenProvider.createToken(user.toAuthUser());
+        String token = jwtTokenProvider.createToken(user);
         return ResponseEntity.ok().header(AUTHORIZATION, token).body(user);
     }
 

@@ -32,7 +32,7 @@ public class User implements UserDetails {
     private LocalDate dob;
     @ElementCollection
     @CollectionTable(name = "USER_ROLES",joinColumns = @JoinColumn(name = "USER_ID"))
-    @Column(name = "ROLES")
+    @Column(name = "ROLE")
     private List<Role> authorities;
 
     @Override

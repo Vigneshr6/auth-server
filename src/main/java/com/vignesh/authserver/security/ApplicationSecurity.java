@@ -36,7 +36,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/auth/**").permitAll()
                 .antMatchers("/h2/**").permitAll()
                 .anyRequest().authenticated();
-//                .antMatchers("/api/users").hasRole("USER");
+////                .antMatchers("/api/users").hasRole("USER");
         http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
     }
 

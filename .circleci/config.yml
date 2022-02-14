@@ -44,3 +44,6 @@ jobs:
 
       # run tests!
       - run: ./gradlew test
+      - run:
+          name: Analyze on SonarCloud
+          command: ./gradlew build sonarqube

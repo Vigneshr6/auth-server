@@ -1,5 +1,7 @@
 jobs:
   build-and-test:
+    docker:
+      - image: 'eclipse-temurin:17-jdk'
     steps:
       - checkout
       - gradle/test

@@ -7,7 +7,7 @@ plugins {
 
 group = 'com.vignesh'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
+sourceCompatibility = '16'
 
 repositories {
 	mavenCentral()
@@ -44,7 +44,7 @@ tasks.named('test') {
 
 sonarqube {
 	properties {
-		property "sonar.projectKey", "vigneshr6_java-basics"
+		property "sonar.projectKey", "vigneshr6_auth-server"
 		property "sonar.organization", "iamvigneshr6"
 		property "sonar.host.url", "https://sonarcloud.io"
 	}

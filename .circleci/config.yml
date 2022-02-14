@@ -21,14 +21,14 @@ jobs:
       # Use mvn clean and package as the standard maven build phase
       - run:
           name: Analyze on SonarCloud
-          command: mvn verify sonar:sonar -Dsonar.projectKey=vigneshr6_auth-server
+          command: gradle sonar -Dsonar.projectKey=vigneshr6_auth-server
       - run:
           name: Build
-          command: mvn -B -DskipTests clean package
+          command: gradle build
       # Then run your tests!
       - run:
           name: Test
-          command: mvn test
+          command: gradle test
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows

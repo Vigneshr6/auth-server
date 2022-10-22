@@ -1,9 +1,9 @@
 FROM eclipse-temurin:18-jdk
-ARG releaseVersion=1.1
+ARG releaseVersion=1.0-SNAPSHOT
 
 EXPOSE 8080
 
 COPY ./build/libs/spring-backend-app-${releaseVersion}.jar /usr/app/
 WORKDIR /usr/app
 
-ENTRYPOINT ["java", "-jar", "spring-backend-app-1.0.jar"]
+ENTRYPOINT ["java", "-jar", "spring-backend-app-${releaseVersion}.jar"]

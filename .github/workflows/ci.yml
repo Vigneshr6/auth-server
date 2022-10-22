@@ -66,5 +66,5 @@ jobs:
       with:
         context: .
         push: true
-        build-args: releaseVersion=${{ env.RELEASE_VERSION }}
+        build-args: releaseVersionArg=${{ env.RELEASE_VERSION }}
         tags: iamvigneshr6/spring-backend-app:${{ env.RELEASE_VERSION }},iamvigneshr6/spring-backend-app:latest

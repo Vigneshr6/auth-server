@@ -41,11 +41,3 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
-
-sonarqube {
-	properties {
-		property "sonar.projectKey", "vigneshr6_auth-server"
-		property "sonar.organization", "iamvigneshr6"
-		property "sonar.host.url", "https://sonarcloud.io"
-	}
-}

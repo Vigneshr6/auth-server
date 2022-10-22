@@ -41,3 +41,9 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+sonarqube {
+	properties {
+		property "sonar.host.url", "https://sonarcloud.io"
+	}
+}

@@ -61,5 +61,6 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v3
       with:
+        context: .
         push: true
         tags: iamvigneshr6/spring-backend-app:latest

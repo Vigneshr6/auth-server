@@ -7,4 +7,4 @@ EXPOSE 8080
 COPY ./build/libs/spring-backend-app-${releaseVersion}.jar /usr/app/
 WORKDIR /usr/app
 
-ENTRYPOINT ["java", "-jar", "$(echo spring-backend-app-$releaseVersion.jar)"]
+ENTRYPOINT java -jar spring-backend-app-$releaseVersion.jar

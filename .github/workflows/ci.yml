@@ -21,7 +21,7 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v2
 
-    - name: Set up JDK 17
+    - name: Set up JDK
       uses: actions/setup-java@v2
       with:
         java-version: '18'
@@ -49,6 +49,9 @@ jobs:
       with:
         arguments: test sonarqube build
 
+    - name: Set Release version env variable
+      run: echo "RELEASE_VERSION=$(gradle properties -q | grep "version:" | awk '{print $2}')" >> $GITHUB_ENV
+
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
 
@@ -63,4 +66,5 @@ jobs:
       with:
         context: .
         push: true
-        tags: iamvigneshr6/spring-backend-app:latest
+        build-args: releaseVersion=${{ env.RELEASE_VERSION }}
+        tags: iamvigneshr6/spring-backend-app:${{ env.RELEASE_VERSION }},iamvigneshr6/spring-backend-app:latest

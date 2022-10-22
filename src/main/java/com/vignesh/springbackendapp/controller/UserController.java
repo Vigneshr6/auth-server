@@ -1,8 +1,8 @@
-package com.vignesh.authserver.controller;
+package com.vignesh.springbackendapp.controller;
 
-import com.vignesh.authserver.security.JwtTokenProvider;
-import com.vignesh.authserver.service.UserNotFoundException;
-import com.vignesh.authserver.service.UserService;
+import com.vignesh.springbackendapp.security.JwtTokenProvider;
+import com.vignesh.springbackendapp.service.UserNotFoundException;
+import com.vignesh.springbackendapp.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

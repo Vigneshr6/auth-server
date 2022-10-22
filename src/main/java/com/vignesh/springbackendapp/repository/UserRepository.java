@@ -1,6 +1,6 @@
-package com.vignesh.authserver.repository;
+package com.vignesh.springbackendapp.repository;
 
-import com.vignesh.authserver.model.User;
+import com.vignesh.springbackendapp.model.User;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

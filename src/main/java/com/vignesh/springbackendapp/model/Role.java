@@ -1,4 +1,4 @@
-package com.vignesh.authserver.model;
+package com.vignesh.springbackendapp.model;
 
 import org.springframework.security.core.GrantedAuthority;
 

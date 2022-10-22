@@ -1,4 +1,4 @@
-package com.vignesh.authserver.service;
+package com.vignesh.springbackendapp.service;
 
 public class UserNotFoundException extends Exception {
     public UserNotFoundException() {

@@ -1,7 +1,7 @@
-package com.vignesh.authserver.service;
+package com.vignesh.springbackendapp.service;
 
-import com.vignesh.authserver.model.User;
-import com.vignesh.authserver.repository.UserRepository;
+import com.vignesh.springbackendapp.model.User;
+import com.vignesh.springbackendapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

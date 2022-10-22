@@ -1,8 +1,8 @@
-package com.vignesh.authserver.security;
+package com.vignesh.springbackendapp.security;
 
-import com.vignesh.authserver.model.User;
-import com.vignesh.authserver.repository.UserRepository;
-import com.vignesh.authserver.service.UserNotFoundException;
+import com.vignesh.springbackendapp.model.User;
+import com.vignesh.springbackendapp.repository.UserRepository;
+import com.vignesh.springbackendapp.service.UserNotFoundException;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

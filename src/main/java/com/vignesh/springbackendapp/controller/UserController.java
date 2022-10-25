@@ -18,18 +18,16 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+  @Autowired private UserService userService;
 
-    @Autowired
-    private JwtTokenProvider jwtTokenProvider;
+  @Autowired private JwtTokenProvider jwtTokenProvider;
 
-    @GetMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity getUser(@PathVariable Long id) {
-        try {
-            return new ResponseEntity(userService.findUserById(id), HttpStatus.OK);
-        } catch (UserNotFoundException e) {
-            return ResponseEntity.notFound().build();
-        }
+  @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity getUser(@PathVariable Long id) {
+    try {
+      return new ResponseEntity(userService.findUserById(id), HttpStatus.OK);
+    } catch (UserNotFoundException e) {
+      return ResponseEntity.notFound().build();
     }
+  }
 }

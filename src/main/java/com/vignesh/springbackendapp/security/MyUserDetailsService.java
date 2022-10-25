@@ -13,13 +13,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class MyUserDetailsService implements UserDetailsService {
 
-    @Autowired
-    private UserRepository userRepository;
+  @Autowired private UserRepository userRepository;
 
-    @SneakyThrows
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findOneByUsernameOrEmail(username,username).orElseThrow(UserNotFoundException::new);
-        return user;
-    }
+  @SneakyThrows
+  @Override
+  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    User user =
+        userRepository
+            .findOneByUsernameOrEmail(username, username)
+            .orElseThrow(UserNotFoundException::new);
+    return user;
+  }
 }

@@ -1,0 +1,31 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+logging:
+  level:
+    org:
+      spring:
+        transaction: TRACE
+    com:
+      vignesh: DEBUG
+    root: INFO
+security:
+  jwt:
+    secret: mysecretkey123$$mysecretkey123$$
+    valid-for: '1800'
+spring:
+  h2:
+    console:
+      path: /h2
+      enabled: 'true'
+  datasource:
+    password: ''
+    driver-class-name: org.h2.Driver
+    username: sa
+    url: jdbc:h2:mem:test
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
